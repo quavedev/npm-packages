@@ -1,0 +1,43 @@
+{
+  "name": "@quave/migrations-postgres",
+  "version": "1.0.0",
+  "description": "PostgreSQL adapter for @quave/migrations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --config ../../eslint.config.js",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "migrations",
+    "postgres",
+    "postgresql",
+    "pg"
+  ],
+  "author": "Quave",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quavedev/npm-packages.git",
+    "directory": "packages/migrations-postgres"
+  },
+  "dependencies": {
+    "@quave/migrations": "^2.0.0",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "pg-mem": "^3.0.14"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

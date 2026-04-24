@@ -3,6 +3,7 @@
 Backend-agnostic migration orchestrator. Install an adapter package alongside this one to pick a backend:
 
 - [`@quave/migrations-mongodb`](../migrations-mongodb) — MongoDB
+- [`@quave/migrations-postgres`](../migrations-postgres) — PostgreSQL (via `pg`)
 - [`@quave/migrations-redshift`](../migrations-redshift) — AWS Redshift (Data API)
 
 Need a backend we don't ship? Implement the `MigrationBackend` interface exported from this package and pass it to `new Migrations(backend, options)`.
@@ -12,6 +13,8 @@ Need a backend we don't ship? Implement the `MigrationBackend` interface exporte
 ```bash
 # Pick the adapter that matches your database. It depends on this package.
 npm install @quave/migrations-mongodb
+# or
+npm install @quave/migrations-postgres
 # or
 npm install @quave/migrations-redshift
 ```
@@ -82,6 +85,7 @@ await migrations.migrateTo('latest');
 Every adapter's `tryLock()` is enforced *by the database*, so concurrent migration processes are safe:
 
 - **MongoDB**: atomic `updateOne({_id:'control', locked:false}, ...)`. The DB guarantees exactly one winner.
+- **Postgres**: conditional `UPDATE ... WHERE locked = FALSE RETURNING id`. Postgres's row-level lock under `READ COMMITTED` guarantees the second caller sees `locked = TRUE` and matches zero rows.
 - **Redshift**: single-row serializable `UPDATE ... WHERE locked = FALSE` with a client-generated nonce, then a read-back `SELECT` to confirm ownership. Serialization failures (SQLSTATE `40001` / "Serializable isolation violation") are caught and treated as "did not win."
 
 ## Writing a custom backend
