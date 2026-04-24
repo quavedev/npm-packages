@@ -1,0 +1,42 @@
+{
+  "name": "@quave/migrations-redshift",
+  "version": "1.0.0",
+  "description": "AWS Redshift Data API adapter for @quave/migrations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --config ../../eslint.config.js",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "migrations",
+    "redshift",
+    "aws",
+    "data-api"
+  ],
+  "author": "Quave",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quavedev/npm-packages.git",
+    "directory": "packages/migrations-redshift"
+  },
+  "dependencies": {
+    "@aws-sdk/client-redshift-data": "^3.1036.0",
+    "@quave/migrations": "^2.0.0"
+  },
+  "devDependencies": {
+    "aws-sdk-client-mock": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
