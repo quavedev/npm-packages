@@ -1,0 +1,49 @@
+{
+  "name": "@quave/migrations",
+  "version": "2.0.0",
+  "description": "Backend-agnostic migration orchestrator with pluggable adapters",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./dist/testing/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --config ../../eslint.config.js",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "migrations",
+    "database",
+    "async",
+    "typescript"
+  ],
+  "author": "Quave",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quavedev/npm-packages.git",
+    "directory": "packages/migrations"
+  },
+  "bugs": {
+    "url": "https://github.com/quavedev/npm-packages/issues"
+  },
+  "homepage": "https://github.com/quavedev/npm-packages#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
