@@ -26,8 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/quavedev/npm-packages.git",
+    "url": "git+https://github.com/quavedev/npm-packages.git",
     "directory": "packages/migrations-postgres"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@quave/migrations": "^2.0.0",

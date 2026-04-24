@@ -9,7 +9,9 @@
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "lint": "eslint packages/*/src",
-    "clean": "npm run clean --workspaces --if-present"
+    "clean": "npm run clean --workspaces --if-present",
+    "publish:all": "bash scripts/publish-all.sh",
+    "publish:all:dry-run": "bash scripts/publish-all.sh --dry-run"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

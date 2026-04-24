@@ -36,13 +36,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/quavedev/npm-packages.git",
+    "url": "git+https://github.com/quavedev/npm-packages.git",
     "directory": "packages/migrations"
   },
   "bugs": {
     "url": "https://github.com/quavedev/npm-packages/issues"
   },
   "homepage": "https://github.com/quavedev/npm-packages#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20.0.0"
   }
